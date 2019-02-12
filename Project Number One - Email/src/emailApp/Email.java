@@ -10,8 +10,8 @@ public class Email {
 	//second Name
 	private String lastName ;
 	
-	//departament
-	private String departament;
+	//department
+	private String department;
 	
 	//password
 	private String password ;
@@ -39,10 +39,10 @@ public class Email {
 		System.out.println("EMAIL WAS CREATED: " + this.firstName + " " + this.lastName) ;
 		
 		//Method to get the department and return it
-		this.departament = setDepartament() ;
+		this.department = setDepartment() ;
 		
-		//print what departament is
-		System.out.println("Departament is: " + this.departament) ;
+		//print what department is
+		System.out.println("Department is: " + this.department) ;
 		
 		//method to return a random password
 		this.password = randomPassword(defaultPasswordLength) ;
@@ -51,14 +51,17 @@ public class Email {
 		System.out.println("The password is: " + this.password) ;
 		
 		//Combine elements to get emails
-		email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + departament + "." + companySuffix ;
-		
+		if(setDepartment() != "")
+			email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "." + companySuffix ;
+		else
+			email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "" + companySuffix ;
+
 		//Print the email
 		System.out.println("Email was created: " + email) ;
 	}//Email
 	
 	//Ask for the department
-	private String setDepartament()
+	private String setDepartment()
 	{
 		//make a choose
 		System.out.println("Enter the department\n1 for Sales\n2 for Development\n3 for accounting\n0 for none") ;
@@ -67,17 +70,17 @@ public class Email {
 		Scanner scan = new Scanner(System.in) ;
 		
 		//getting the department number
-		int departamentChoice = scan.nextInt() ;
+		int departmentChoice = scan.nextInt() ;
 		
-		//return departament
-		if(departamentChoice == 1)
+		//return department
+		if(departmentChoice == 1)
 			return "sales" ;
-		else if(departamentChoice == 2)
+		else if(departmentChoice == 2)
 			return "development" ;
-		else if(departamentChoice == 3)
+		else if(departmentChoice == 3)
 			return "accounting" ;
 		else return "" ;
-	}//setDepartament
+	}//setdepartment
 	
 	private String randomPassword(int length)
 	{
