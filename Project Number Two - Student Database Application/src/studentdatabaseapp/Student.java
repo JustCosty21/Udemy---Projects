@@ -65,7 +65,7 @@ public class Student {
 	public void enroll()
 	{
 		do {
-			
+			System.out.println("The courses are: \nHistory 101\nMathematics 101\nEnglish 101\nChemistry 101\nComputer Science 101");
 			System.out.print("Choose course to enrool or press Q to quit: ") ;
 			
 			//create the scanner
@@ -75,7 +75,12 @@ public class Student {
 			String course = scan.nextLine() ;
 			
 			//check if course if different from Q - if so, add it to the list of courses
-			if(!course.equals("Q"))
+			if(!course.equals("Q") && ( course.equals("History 101") || 
+										course.equals("Mathematics 101") ||
+										course.equals("English 101") ||
+										course.equals("Chemistry 101") ||
+										course.equals("Computer Science 101"))
+									)
 			{
 				//add the course to the list of courses
 				courses = courses + "\n" + course ;
@@ -83,6 +88,13 @@ public class Student {
 				//modify the student's balance
 				balance += costOfCourse ;
 			}//if
+			
+			else if(!course.equals("Q") && !( course.equals("History 101") || 
+										course.equals("Mathematics 101") ||
+										course.equals("English 101") ||
+										course.equals("Chemistry 101") ||
+										course.equals("Computer Science 101") ))
+				System.out.println("Invalid course! Please try again!") ;
 			else
 				break ;
 		}while(true) ;		
